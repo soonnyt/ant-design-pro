@@ -20,7 +20,7 @@
     "test": "umi test",
     "test:component": "umi test ./src/components",
     "test:all": "node ./tests/run-tests.js",
-    "prettier": "prettier --write './src/**/*'",
+    "prettier": "node ./scripts/prettier.js",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:build": "docker-compose -f ./docker/docker-compose.dev.yml build",
     "docker-prod:dev": "docker-compose -f ./docker/docker-compose.yml up",
@@ -41,7 +41,7 @@
     "hash.js": "^1.1.5",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
-    "memoize-one": "^4.0.0",
+    "memoize-one": "^5.0.0",
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
     "nzh": "^1.0.3",
@@ -62,7 +62,7 @@
   "devDependencies": {
     "@types/react": "^16.7.7",
     "@types/react-dom": "^16.0.10",
-    "antd-pro-merge-less": "^0.2.0",
+    "antd-pro-merge-less": "^1.0.0",
     "antd-theme-webpack-plugin": "^1.1.8",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.1.1",
@@ -99,8 +99,8 @@
     "puppeteer": "^1.10.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx,less}": [
-      "prettier --write",
+    "**/*.{js,ts,tsx,json,jsx,less}": [
+      "node ./scripts/lint-prettier.js",
       "git add"
     ],
     "**/*.{js,jsx}": "npm run lint-staged:js",
